@@ -1,8 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:screenshot/screenshot.dart';
 
 Future<T?> showConfirmationDialog<T>(
   BuildContext context, {
@@ -110,44 +106,4 @@ showDialogBox(BuildContext context, String message) {
       );
     },
   );
-}
-
-Future<void> captureAndSaveImage(
-    BuildContext context, ScreenshotController screenshotController) async {
-  showProgressDialog(context);
-
-  // Request storage permission
-  if (await Permission.storage.request().isGranted) {
-    final image = await screenshotController.capture(
-      delay: const Duration(milliseconds: 200),
-    );
-
-    if (image != null) {
-      String customDirectoryPath = '/storage/emulated/0/Download/';
-
-      final directory = Directory(customDirectoryPath);
-      if (!directory.existsSync()) {
-        directory.createSync(recursive: true);
-      }
-
-      final file = File('${directory.path}/screenshot.png');
-      await file.writeAsBytes(image);
-      hideProgressDialog(context);
-      showDialogBox(context, 'Image downloaded successfully...');
-    } else {
-      hideProgressDialog(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to capture the image'),
-        ),
-      );
-    }
-  } else {
-    hideProgressDialog(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Storage permission denied'),
-      ),
-    );
-  }
 }

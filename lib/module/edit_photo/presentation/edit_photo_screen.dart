@@ -1,11 +1,10 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_editor/module/edit_photo/model/dragable_widget_child.dart';
 import 'package:photo_editor/module/edit_photo/presentation/cubit/edit_photo_cubit.dart';
 import 'package:photo_editor/module/edit_photo/presentation/pages/add_text_layout.dart';
@@ -87,7 +86,40 @@ class _EditPhotoLayoutState extends State<EditPhotoLayout> {
                 children: [
                   MenuIconWidget(
                     onTap: () async {
-                      captureAndSaveImage(context, screenshotController);
+                      final status = await Permission.storage.request();
+
+                      if (status.isGranted) {
+                        String fileName =
+                            DateTime.now().microsecondsSinceEpoch.toString() +
+                                '.png'; // Add ".png" extension
+                        const path = '/storage/emulated/0/Download';
+                        try {
+                          screenshotController.captureAndSave(
+                            path,
+                            fileName: fileName,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                                  Text('Screenshot saved to $path/$fileName'),
+                            ),
+                          );
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  'Failed to capture and save screenshot: $e'),
+                            ),
+                          );
+                        }
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content:
+                                Text('Permission to access storage denied.'),
+                          ),
+                        );
+                      }
                     },
                     icon: CupertinoIcons.cloud_download,
                   ),
@@ -154,10 +186,10 @@ class _EditPhotoLayoutState extends State<EditPhotoLayout> {
                       ),
                       MenuIconWidget(
                         onTap: () async {
-                          final curentState =
+                          final currentState =
                               context.read<EditPhotoCubit>().state.editState;
 
-                          if (curentState == EditState.layering) {
+                          if (currentState == EditState.layering) {
                             context
                                 .read<EditPhotoCubit>()
                                 .changeEditState(EditState.idle);

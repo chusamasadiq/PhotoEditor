@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="299160d7-080d-4978-890f-17ce11ee22bc" name="Changes" comment="Photo Editor">
+    <list default="true" id="299160d7-080d-4978-890f-17ce11ee22bc" name="Changes" comment="download set">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/flutter_photo_editor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flutter_photo_editor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/component/confirmation_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/component/confirmation_dialog.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/module/edit_photo/presentation/edit_photo_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/module/edit_photo/presentation/edit_photo_screen.dart" afterDir="false" />
@@ -70,11 +69,19 @@
       <option name="project" value="LOCAL" />
       <updated>1698999473958</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="download set">
+      <created>1699006036821</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699006036821</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Photo Editor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Photo Editor" />
+    <MESSAGE value="download set" />
+    <option name="LAST_COMMIT_MESSAGE" value="download set" />
   </component>
 </project>
