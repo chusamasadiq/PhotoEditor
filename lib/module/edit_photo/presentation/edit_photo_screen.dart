@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -85,15 +87,7 @@ class _EditPhotoLayoutState extends State<EditPhotoLayout> {
                 children: [
                   MenuIconWidget(
                     onTap: () async {
-                      // context
-                      //     .read<EditPhotoCubit>()
-                      //     .changeDownloadStatus(DownloadStatus.downloading);
-                      //
-                      // final image = await screenshotController.capture(
-                      //   delay: const Duration(milliseconds: 200),
-                      // );
-                      // if (!mounted) return;
-                      // context.read<EditPhotoCubit>().downloadImage(image);
+                      captureAndSaveImage(context, screenshotController);
                     },
                     icon: CupertinoIcons.cloud_download,
                   ),
